@@ -3,12 +3,21 @@
 #include "rotor.h"
 #include "serial.h"
 
+
 int main(){			
 	
 	sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8, .num_stop_bits = 1};
 	sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8, .num_stop_bits = 1};
 
-	int response = rot_init(az_rotor, el_rotor);
+	int serial_fd_az = rot_init(az_rotor);
+	int serial_fd_el = rot_init(el_rotor);
 	
-	printf("response: %d\n", response);
+	printf("response az: %d\n", serial_fd_az);
+	printf("response el: %d\n", serial_fd_el);
+
+	usleep(1000000);
+
+	sROTOR_INFO info = rot_get_info(serial_fd_az);
+	printf("Version ID: %s\n", info.id);
+
 }

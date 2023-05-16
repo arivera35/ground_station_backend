@@ -51,14 +51,28 @@ int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits)
         return -1;
     }
 
+    // No parity
+    options.c_cflag &= ~PARENB;
+
+    // Raw input
+    options.c_cflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+
+    // Raw output
+    options.c_cflag &= ~OPOST;
+
+    // No handshake
+    options.c_cflag &= ~CRTSCTS;
+    options.c_cflag &= ~IXON;
+
+    options.c_cc[VMIN] = 1; 
+
     // Apply the configuration
     tcsetattr(fd, TCSANOW, &options);
 
+    usleep(50*1000);
+
     // Clear the input and output buffers
     tcflush(fd, TCIOFLUSH);
-
-    // Set the blocking mode (optional)
-    fcntl(fd, F_SETFL, 0);
 
     return fd;
 }
