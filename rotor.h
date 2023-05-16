@@ -16,13 +16,14 @@ typedef struct {
 typedef struct {
     float rot_azimuth;
     float rot_elevation;
+    char id [50];
 }sROTOR_INFO;
 
 // Open serial communication with controller
 int rot_init(sROTOR_CONFIG rotor_az, sROTOR_CONFIG rotor_el);
 
 // *** for testing *** sends R1n; to obtain version ID of controller software
-sROTOR_INFO rot_get_info();
+sROTOR_INFO rot_get_info(int serial_fd);
 
 /*
 // Get rotor azimuth and elevation position 
