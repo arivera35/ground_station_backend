@@ -1,10 +1,11 @@
 #include "serial.h"
 #include "rotor.h"
 
-int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits) {
+int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits) 
+{
     
     int fd;
-    
+
     // Open the serial port
     fd = open(port_num, O_RDWR | O_NOCTTY | O_NDELAY);
     if (fd == -1) {
