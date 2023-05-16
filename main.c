@@ -15,9 +15,9 @@ int main(){
 	printf("response az: %d\n", serial_fd_az);
 	printf("response el: %d\n", serial_fd_el);
 
-	usleep(1000000);
+	usleep(10000);
 
-	sROTOR_INFO info = rot_get_info(serial_fd_az);
-	printf("Version ID: %s\n", info.id);
+	char* info = rot_get_info(serial_fd_az);
+	printf("Version ID: %s\n", info);
 
 }

@@ -64,12 +64,11 @@ int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits)
     options.c_cflag &= ~CRTSCTS;
     options.c_cflag &= ~IXON;
 
-    options.c_cc[VMIN] = 1; 
+    options.c_cc[VMIN] = 1;
+    options.c_cc[VTIME] = 5;
 
     // Apply the configuration
     tcsetattr(fd, TCSANOW, &options);
-
-    usleep(50*1000);
 
     // Clear the input and output buffers
     tcflush(fd, TCIOFLUSH);

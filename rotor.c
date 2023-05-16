@@ -15,21 +15,20 @@ int rot_init(sROTOR_CONFIG rotor)
     return serial_fd;
 };
 
-
+/*
 sROTOR_INFO rot_get_info(int serial_fd)
 {
     sROTOR_INFO info;
-
     // Send the command "R1n;" to obtain version ID
+    printf("SERIAL FD %d\n", serial_fd);
     char command[] = "R1n;";
-    printf("about to write to serial port\n");
-    int bytes_written = write(serial_fd, command, sizeof(command) - 1);
-    printf("sent msg\n");
+    int bytes_written = write(serial_fd, command, strlen(command));
+    printf("sent command\n");
     if (bytes_written == -1) {
         printf("Error writing to serial port\n");
     } else {
         // Wait for response and read the version ID
-        char response[100];
+        char response[1024];
         printf("waiting for response\n");
         int bytes_read = read(serial_fd, response, sizeof(response) - 1);
         if (bytes_read == -1) {
@@ -44,4 +43,29 @@ sROTOR_INFO rot_get_info(int serial_fd)
     }
 
     return info;
+}
+*/
+
+char* rot_get_info(int serial_fd){
+    char command[] = "R1n";
+    int bytes_written = write(serial_fd, command, strlen(command));
+    if (bytes_written == -1){
+        printf("Error writing to serial port\n");
+        return NULL;
+    }
+    // else{
+        usleep((3+25)*100);
+        static char response [2048];
+        printf("Waiting for response\n");
+        int bytes_read = read(serial_fd, response, sizeof(response) -1);
+        if (bytes_read == -1){
+            printf("Error reading from serial port\n");
+            return NULL;
+        }
+        response[bytes_read] = '\0';
+        printf("Read from serial port\n");
+        return response;
+    // }
+
+
 }

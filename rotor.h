@@ -23,7 +23,8 @@ typedef struct {
 int rot_init(sROTOR_CONFIG rotor);
 
 // *** for testing *** sends R1n; to obtain version ID of controller software
-sROTOR_INFO rot_get_info(int serial_fd);
+// sROTOR_INFO rot_get_info(int serial_fd);
+char* rot_get_info(int serial_fd); 
 
 /*
 // Get rotor azimuth and elevation position 
