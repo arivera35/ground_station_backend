@@ -53,19 +53,20 @@ char* rot_get_info(int serial_fd){
         printf("Error writing to serial port\n");
         return NULL;
     }
-    // else{
-        usleep((3+25)*100);
-        static char response [2048];
-        printf("Waiting for response\n");
-        int bytes_read = read(serial_fd, response, sizeof(response) -1);
-        if (bytes_read == -1){
-            printf("Error reading from serial port\n");
-            return NULL;
-        }
-        response[bytes_read] = '\0';
-        printf("Read from serial port\n");
-        return response;
-    // }
 
-
+    usleep((3+25)*100);
+    static char response [2048];
+    printf("Waiting for response\n");
+    printf("Serial_fd %d\n", serial_fd);
+    int bytes_read = read(serial_fd, response, sizeof(response) -1);
+    
+    if (bytes_read == -1){
+        printf("Error reading from serial port\n");
+        return NULL;
+    }
+    
+    response[bytes_read] = '\0';
+    printf("Read from serial port\n");
+    return response;
+   
 }

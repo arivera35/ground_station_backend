@@ -53,7 +53,7 @@ int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits)
 
     // No parity
     options.c_cflag &= ~PARENB;
-
+    
     // Raw input
     options.c_cflag &= ~(ICANON | ECHO | ECHOE | ISIG);
 
@@ -74,4 +74,50 @@ int serial_init(int baud_rate, char port_num[], int num_bits, int num_stop_bits)
     tcflush(fd, TCIOFLUSH);
 
     return fd;
+}
+
+// OPEN PORT
+int open_port(void){
+    int fd;
+    fd = open("/dev/ttyUSB0", O_RDWR | O_NOCTTY | O_NDELAY);
+    struct termios options;
+    tcgetattr(fd, &options);
+
+    // Set the baud rate
+    cfsetispeed(&options, B9600);
+    cfsetospeed(&options, B9600);
+
+    options.c_cflag |= CS8;
+    options.c_cflag &= ~CSTOPB; 
+    options.c_cflag &= ~PARENB;
+
+    if (fd == -1){
+        // could not open port
+        perror("open_port: unable to open /dev/ttyUSB0 - ");
+    }
+    else
+        fcntl(fd, F_SETFL, 0);
+    return (fd);
+
+}
+
+int write_cmd(int fd){
+    int n = write(fd, "R1n;", 5);
+    if (n == -1){
+        printf("write failed\n");
+        return -1;
+    }
+    return 1;
+
+}
+
+int read_resp(int fd){
+    char buf[1024];
+    int n = read(fd, buf, sizeof(buf));
+    if (n < 0){
+        perror("read failed\n");
+        return -1;
+    }
+    printf("read successful\n");
+    return 1;
 }
