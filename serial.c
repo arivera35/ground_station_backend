@@ -87,28 +87,39 @@ int open_port(void){
     cfsetispeed(&options, B9600);
     cfsetospeed(&options, B9600);
 
-    options.c_cflag |= CS8;
-    options.c_cflag &= ~CSTOPB; 
-    options.c_cflag &= ~PARENB;
+    // Set up receiver and set to local mode 
+    options.c_cflag |= (CLOCAL | CREAD | CS8); 
+    options.c_iflag |= IGNPAR | ICRNL; 
+
+    // options.c_cflag |= CS8;
+    // options.c_cflag &= ~CSTOPB; 
+    // options.c_cflag &= ~PARENB;
+
+    if ((tcsetattr(fd, TCSANOW, &options)) != 0){
+        perror("error from tcsetattr");
+    }
 
     if (fd == -1){
         // could not open port
         perror("open_port: unable to open /dev/ttyUSB0 - ");
     }
-    else
-        fcntl(fd, F_SETFL, 0);
+    
     return (fd);
 
 }
 
 int write_cmd(int fd){
-    int n = write(fd, "R1n;", 5);
-    if (n == -1){
+    tcflush(fd, TCIFLUSH);
+    char transmit[5];
+    strcpy(trasmit, "");
+    write(fd, transmit, 5);
+    strcpy(transmit, "Bin;");
+    int n = write(fd, transmit, 5);
+    if (n == -1){ 
         printf("write failed\n");
         return -1;
     }
     return 1;
-
 }
 
 int read_resp(int fd){
