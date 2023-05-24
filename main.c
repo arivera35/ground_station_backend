@@ -3,7 +3,9 @@
 
 int main(void){
 
-  sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
+  sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8};
+  sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
+
 
   int fd = serial_init(az_rotor.baud_rate, az_rotor.port_num, az_rotor.num_bits);
   int wrsp = serial_write(fd, "R1n;");
