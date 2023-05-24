@@ -10,7 +10,6 @@ typedef struct {
     char port_num [50];
     int baud_rate;
     int num_bits;
-    int num_stop_bits;
 }sROTOR_CONFIG;
 
 typedef struct {

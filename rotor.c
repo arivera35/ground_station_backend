@@ -5,7 +5,7 @@
 int rot_init(sROTOR_CONFIG rotor)
 {
     // Initiate serial communication
-    int serial_fd = serial_init(rotor.baud_rate, rotor.port_num, rotor.num_bits, rotor.num_stop_bits);
+    int serial_fd = serial_init(rotor.baud_rate, rotor.port_num, rotor.num_bits);
 
     if (serial_fd < 0){
         printf("Failed to initialize serial communication\n");

@@ -14,13 +14,15 @@
 // #include "serial_test.c"
 // #include "rotor.h"
 
-int serial_init(int baud_rate, char port_num [], int num_bits, int num_stop_bits);
+int serial_init(int baud_rate, char port_num [], int num_bits);
 
-int open_port(void);
+int serial_write(int fd, char cmd []);
 
-int write_cmd(int fd);
+// int serial_read(int fd);
 
-int read_resp(int fd);
+// int write_cmd(int fd);
+
+// int read_resp(int fd);
 
 //int serial_close();
 
