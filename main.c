@@ -1,5 +1,6 @@
 #include "serial.h"
 #include "rotor.h"
+#include "rot_commands.h"
 
 int main(void){
 
@@ -8,7 +9,7 @@ int main(void){
 
 
   int fd = serial_init(az_rotor.baud_rate, az_rotor.port_num, az_rotor.num_bits);
-  int wrsp = serial_write(fd, "R1n;");
+  int wrsp = serial_write(fd, VERSION_ID);
   printf("write response: %d\n", wrsp);
   char response [255];
   int bytes_read = serial_read(fd, response, 255);

@@ -7,7 +7,7 @@ int serial_init(int baud_rate, char port_num[], int num_bits)
     int fd;
     struct termios options; // serial port settings
 
-    // Open the serial port
+    // Open the serial port with read-write access, no read delay and no modem signals 
     fd = open(port_num, O_RDWR | O_NDELAY | O_NOCTTY);
     
     if (fd == -1) {
