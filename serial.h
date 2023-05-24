@@ -18,7 +18,7 @@ int serial_init(int baud_rate, char port_num [], int num_bits);
 
 int serial_write(int fd, char cmd []);
 
-// int serial_read(int fd);
+int serial_read(int fd, char response [], int len);
 
 // int write_cmd(int fd);
 

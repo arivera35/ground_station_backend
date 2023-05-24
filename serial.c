@@ -65,10 +65,19 @@ int serial_write(int fd, char cmd []){
         return -1;
     }
     printf("We sent %d bytes\n", len);
-
-    usleep(40000);
-
     return 1;
+}
+
+int serial_read(int fd, char response [], int len) {
+    usleep(40000);
+    memset(response, 0, len);
+    len = read(fd, response, len);
+    if (len < 0){
+        printf("Error reading from serial port\n");
+        return -1;
+    }
+    printf("Received %d bytes\n", len);
+    return len;
 }
 
 // // OPEN PORT
