@@ -13,7 +13,7 @@ int rot_init(sROTOR_CONFIG rotor)
     }
 
     return serial_fd;
-};
+}
 
 /*
 sROTOR_INFO rot_get_info(int serial_fd)
