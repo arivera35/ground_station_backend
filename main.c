@@ -17,5 +17,4 @@ int main(void){
   printf("String received: %s\n", response);
   serial_close(fd);
 
-
 }
