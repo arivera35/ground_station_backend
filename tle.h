@@ -21,18 +21,42 @@
 // TODO: make function to delete catalog number from database
 
 /* Two-line-element satellite orbital data */
-typedef struct
-{
-  double
-	epoch, xndt2o, xndd6o, bstar,
-	xincl, xnodeo, eo, omegao, xmo, xno;
-  int
-	catnr,  /* Catalogue Number  */
-	elset,  /* Element Set       */
-	revnum; /* Revolution Number */
-  char
-	sat_name[25], /* Satellite name string    */
-	idesg[9];     /* International Designator */
+// typedef struct
+// {
+//   double
+// 	epoch, xndt2o, xndd6o, bstar,
+// 	xincl, xnodeo, eo, omegao, xmo, xno;
+//   int
+// 	catnr,  /* Catalogue Number  */
+// 	elset,  /* Element Set       */
+// 	revnum; /* Revolution Number */
+//   char
+// 	sat_name[25], /* Satellite name string    */
+// 	idesg[9];     /* International Designator */
+// } tle_t;
+
+typedef struct {
+	char sat_name [12];
+	char idesg [20];
+    int sat_num;
+    char class;
+    char* launch_yr;
+    int launch_num;
+    char* launch_piece;
+    char* epoch_yr;
+    double epoch_day;
+    double d_mean_motion;
+    double dd_mean_motion;
+    double drag;
+    char ephemeris;
+    int element_num;
+    double inclination;
+    double r_node_ascension;
+    double eccentricity;
+    double perigee_arg;
+    double mean_anomaly;
+    double rev_per_day;
+    int rev_num;
 } tle_t;
 
 /* Geodetic position s     tructure */
@@ -49,5 +73,6 @@ typedef struct
 	x, y, z, w;
 } vector_t;
 
-int set_cat_num(char cat_num []);
-int get_tle();
+// int set_cat_num(char cat_num []);
+int get_tle(char url [], tle_t *tle);
+int set_cat_num(char cat_num [], tle_t *tle);

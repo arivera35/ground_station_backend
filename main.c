@@ -5,9 +5,12 @@
 
 int main(void){
 
-  char catnr [] = "25544";
-  set_cat_num(catnr);
-  printf("%f\n",tle.epoch);
+  char catnr [5];
+  printf("Enter NORAD catalog number: ");
+  scanf("%s", catnr);
+  tle_t tle_test;
+  set_cat_num(catnr, &tle_test);
+  printf("%s\n",tle_test.sat_name);
 
 }
 /*  SERIAL TESTS
