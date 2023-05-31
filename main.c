@@ -5,6 +5,11 @@
 
 int main(void){
 
+  char catnr [] = "25544";
+  set_cat_num(catnr);
+  printf("%f\n",tle.epoch);
+
+}
 /*  SERIAL TESTS
   sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8};
   sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
@@ -19,7 +24,5 @@ int main(void){
   printf("String received: %s\n", response);
   serial_close(fd);
 */
-  char catnr [] = "25544";
-  set_cat_num(catnr);
   // int tle_res = get_tle();
-}
+// }
