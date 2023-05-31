@@ -17,7 +17,7 @@ int rot_init(sROTOR_CONFIG rotor)
 
 /*
 sROTOR_INFO rot_get_info(int serial_fd)
-{
+ 
     sROTOR_INFO info;
     // Send the command "R1n;" to obtain version ID
     printf("SERIAL FD %d\n", serial_fd);
