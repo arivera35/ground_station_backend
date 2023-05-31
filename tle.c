@@ -9,18 +9,14 @@ int set_cat_num(char cat_num []){
 }
 
 int get_tle(char url []){
-    printf("URL: %s\n", url);
     // initializing curl pointer
     CURL *curl = curl_easy_init();
     if (!curl){
         printf("Error initializing curl\n");
         return -1;
     }
-    // Construct the URL with the provided CATNR value    char url[100];
-    // snprintf(CELESTRACK_URL, sizeof(CELESTRACK_URL), CELESTRACK_URL, cat_num);
     // set options
-    curl_easy_setopt(curl, *url, url);
-
+    curl_easy_setopt(curl, CURLOPT_URL, url);
     // perform action
     CURLcode result = curl_easy_perform(curl);
     if (result > 0 | result > 0){

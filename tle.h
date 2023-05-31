@@ -8,7 +8,7 @@
 #include <curl/curl.h>
 
 #define CELESTRACK_URL "http://celestrak.org/NORAD/elements/gp.php?CATNR=%s&FORMAT=TLE" 
-// #define CELESTRACK_URL "http://celestrak.org/NORAD/elements/gp.php?CATNR=25544&FORMAT=TLE"
+#define CELESTRACK_URL_C "http://celestrak.org/NORAD/elements/gp.php?CATNR=25544&FORMAT=TLE"
 
 // TODO: make a function to acquire NORAD catalog number to fetch API data (add to database of satellites we are tracking?) 
     /* within that -> TODO: get user input through front end*/
