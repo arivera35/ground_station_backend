@@ -36,6 +36,36 @@
 // } tle_t;
 
 typedef struct {
+
+    char name[25];
+    int line_number;
+    int catalog_number;
+    char classification;
+    int international_designator_launch_year;
+    int international_designator_launch_number;
+    char international_designator_launch_piece[3];
+    int epoch_year;
+    double epoch_day;
+    double first_time_derivative;
+    double second_time_derivative;
+    double bstar;
+    int ephemeris;
+    int element_set_type;
+    int element_number;
+    int checksum_line1;
+    double inclination;
+    double right_ascension;
+    double eccentricity;
+    double argument_of_perigee;
+    double mean_anomaly;
+    double mean_motion;
+    int revolution_number;
+    int checksum_line2;
+} TLEData;
+
+
+
+typedef struct {
 	char sat_name [12];
 	char idesg [20];
     int sat_num;
@@ -74,5 +104,6 @@ typedef struct
 } vector_t;
 
 // int set_cat_num(char cat_num []);
-int get_tle(char url [], tle_t *tle);
-int set_cat_num(char cat_num [], tle_t *tle);
+// int get_tle(char url [], tle_t *tle);
+int set_cat_num(char cat_num [], TLEData *tle);
+int get_tle(char url [], TLEData *tle);
