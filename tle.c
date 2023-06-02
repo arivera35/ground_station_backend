@@ -19,29 +19,41 @@ int set_cat_num(char cat_num [], TLEData *tle){
 //     return num_bytes;
 // }
 
-size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp)
+float convert_to_decimal(int i) {
+    int num_digits = 0;
+    int temp = i;
 
-{
+    // Calculate the number of digits
+    while (temp != 0) {
+        temp /= 10;
+        num_digits++;
+    }
 
+    // Calculate the decimal fraction
+    float decimal = (float)(i % 10000) / (float)pow(10, num_digits - 4);
+
+    return decimal;
+}
+size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp){
     size_t total_size = size * nmemb;
-
     TLEData *tle_data = (TLEData *)userp;
-
     // Convert the received data to a string
     char *tle_string = malloc(total_size + 1);
-
     memcpy(tle_string, contents, total_size);
-
     tle_string[total_size] = '\0';
-
     // Parse the TLE string and populate the TLEData object
-    sscanf(tle_string, "%24[^\n]\n%d %5d%c %2d%3d%3c %2d%12lf %10lf %8lf %8lf %d %4d%d",
-           tle_data->name, &tle_data->line_number, &tle_data->catalog_number,
-           &tle_data->classification, &tle_data->international_designator_launch_year,
-           &tle_data->international_designator_launch_number, tle_data->international_designator_launch_piece, &tle_data->epoch_year,
-           &tle_data->epoch_day, &tle_data->first_time_derivative,
-           &tle_data->second_time_derivative, &tle_data->bstar, &tle_data->ephemeris, &tle_data->element_number, &tle_data->checksum_line1);
-    sscanf(tle_string + 69, "%lf %lf %lf %lf %lf %lf %d",
+    sscanf(tle_string, "%24[^\n]\n%*d %5d%*c %2d%3d%*s %2d%12lf %10lf %7lf %7lf %*d %*d%*d",
+           tle_data->name, 
+           &tle_data->catalog_number, 
+           &tle_data->international_designator_launch_year,
+           &tle_data->international_designator_launch_number, 
+           &tle_data->epoch_year,
+           &tle_data->epoch_day, 
+           &tle_data->first_time_derivative,
+           &tle_data->second_time_derivative, 
+           &tle_data->bstar
+           );
+    sscanf(tle_string + 106, "%lf %lf %7lf %lf %lf %11lf%5d%*d",
            &tle_data->inclination, &tle_data->right_ascension, &tle_data->eccentricity,
            &tle_data->argument_of_perigee, &tle_data->mean_anomaly,
            &tle_data->mean_motion, &tle_data->revolution_number);
@@ -50,7 +62,6 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp)
 
     // Return the number of bytes handled by this callback
     return total_size;
-
 }
 
 

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
+#include <math.h>
 #include <ctype.h>
 #include <curl/curl.h>
 
@@ -38,24 +39,24 @@
 typedef struct {
 
     char name[25];
-    int line_number;
+    // int line_number;
     int catalog_number;
-    char classification;
+    // char classification;
     int international_designator_launch_year;
     int international_designator_launch_number;
-    char international_designator_launch_piece[3];
+    // char international_designator_launch_piece[3];
     int epoch_year;
     double epoch_day;
     double first_time_derivative;
     double second_time_derivative;
     double bstar;
-    int ephemeris;
-    int element_set_type;
-    int element_number;
-    int checksum_line1;
+    // int ephemeris;
+    // int element_set_type;
+    // int element_number;
+    // int checksum_line1;
     double inclination;
     double right_ascension;
-    double eccentricity;
+    int eccentricity;
     double argument_of_perigee;
     double mean_anomaly;
     double mean_motion;

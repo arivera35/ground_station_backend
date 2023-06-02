@@ -11,18 +11,18 @@ int main(void){
   TLEData tle_data;
   set_cat_num(catnr, &tle_data);
   printf("TLE Name: %s\n", tle_data.name);
-  printf("Line Number: %d\n", tle_data.line_number);
+  // printf("Line Number: %d\n", tle_data.line_number);
   printf("Catalog Number: %d\n", tle_data.catalog_number);
-  printf("Classification: %c\n", tle_data.classification);
-  printf("International Designator: %02d-%03d-%s\n", tle_data.international_designator_launch_year,
-          tle_data.international_designator_launch_number, tle_data.international_designator_launch_piece);
+  // printf("Classification: %c\n", tle_data.classification);
+  printf("International Designator: %02d-%03d\n", tle_data.international_designator_launch_year,
+          tle_data.international_designator_launch_number);
   printf("Epoch year: %d and epoch day: %lf\n", tle_data.epoch_year, tle_data.epoch_day);
   printf("First Time Derivative: %lf\n", tle_data.first_time_derivative);
-  printf("Second Time Derivative: %lf\n", tle_data.second_time_derivative);
+  printf("Second Time Derivative: %lf\n", convert_to_decimal(tle_data.second_time_derivative));
   printf("BSTAR: %lf\n", tle_data.bstar);
-  printf("Element Set Type: %d\n", tle_data.ephemeris);
-  printf("Element Number: %d\n", tle_data.element_number);
-  printf("Checksum line 1: %d\n", tle_data.checksum_line1);
+  // printf("Element Set Type: %d\n", tle_data.ephemeris);
+  // printf("Element Number: %d\n", tle_data.element_number);
+  // printf("Checksum line 1: %d\n", tle_data.checksum_line1);
   printf("Inclination: %lf\n", tle_data.inclination);
   printf("Right Ascension: %lf\n", tle_data.right_ascension);
   printf("Eccentricity: %lf\n", tle_data.eccentricity);
