@@ -16,7 +16,7 @@ int main(void){
   printf("Classification: %c\n", tle_data.classification);
   printf("International Designator: %02d-%03d-%s\n", tle_data.international_designator_launch_year,
           tle_data.international_designator_launch_number, tle_data.international_designator_launch_piece);
-  printf("Epoch: %d%lf\n", tle_data.epoch_year, tle_data.epoch_day);
+  printf("Epoch year: %d and epoch day: %lf\n", tle_data.epoch_year, tle_data.epoch_day);
   printf("First Time Derivative: %lf\n", tle_data.first_time_derivative);
   printf("Second Time Derivative: %lf\n", tle_data.second_time_derivative);
   printf("BSTAR: %lf\n", tle_data.bstar);
