@@ -42,7 +42,7 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp){
     memcpy(tle_string, contents, total_size);
     tle_string[total_size] = '\0';
     // Parse the TLE string and populate the TLEData object
-    sscanf(tle_string, "%24[^\n]\n%*d %5d%*c %2d%3d%*s %2d%12lf %10lf %7lf %7lf %*d %*d%*d",
+    sscanf(tle_string, "%24[^\n]\n%*d %5d%*c %2d%3d%*s %2d%12lf %9lf%lf %*d %*d%*d",
            tle_data->name, 
            &tle_data->catalog_number, 
            &tle_data->international_designator_launch_year,
