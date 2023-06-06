@@ -106,7 +106,7 @@ double predict_perigee(const predict_orbital_elements_t *m)
 	double del1=1.5*CK2*x3thm1/(a1*a1*betao*betao2);
 	double ao=a1*(1.0-del1*(0.5*TWO_THIRD+del1*(1.0+134.0/81.0*del1)));
 	double delo=1.5*CK2*x3thm1/(ao*ao*betao*betao2);
-	double aodp=ao/(1.0-delo);
+	double aodp=ao/(1.0-delo); 
 
 	return (aodp*(1-m->eccentricity)-AE)*EARTH_RADIUS_KM_WGS84;
 }

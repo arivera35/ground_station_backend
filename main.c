@@ -40,7 +40,6 @@ int main(void){
 		struct predict_observation sat_obs;
 		predict_observe_orbit(obs, &sat_orbit, &sat_obs);
 		printf("azi=%f, ele=%f\n", sat_obs.azimuth*180.0/M_PI, sat_obs.elevation*180.0/M_PI);
-
 		fflush(stdout);
 		usleep(4000000);
 	}
