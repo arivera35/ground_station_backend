@@ -8,47 +8,6 @@
 #include <time.h>
 #include <stdbool.h>
 
-// #define PREDICT_VERSION_MAJOR @PROJECT_VERSION_MAJOR@
-// #define PREDICT_VERSION_MINOR @PROJECT_VERSION_MINOR@
-// #define PREDICT_VERSION_PATCH @PROJECT_VERSION_PATCH@
-// #define PREDICT_VERSION (PREDICT_VERSION_MAJOR * 100 * 100 + PREDICT_VERSION_MINOR * 100 + PREDICT_VERSION_PATCH)
-// #define PREDICT_VERSION_STRING "@PROJECT_VERSION@"
-  
-/**
- * Get the major version number of the library
- *
- * \return Major version number
- */
-// int predict_version_major();
-
-/**
- * Get the minor version number of the library
- *
- * \return Minor version number
- */
-// int predict_version_minor();
-
-/**
- * Get the patch version number of the library
- *
- * \return Patch version number
- */
-// int predict_version_patch();
-
-/**
- * Get the version number of the library
- *
- * \return 2 digit major, 2 digit minor, 2 digit patch decimal version number
- */
-// int predict_version();
-
-/**
- * Get the version number string of the library
- *
- * \return Version number string ("major.minor.patch")
- */
-// char *predict_version_string();
-
 /**
  * The representation of time used by libpredict: The number of days since 31Dec79 00:00:00 UTC. 
  **/
@@ -69,16 +28,6 @@ predict_julian_date_t predict_to_julian(time_t time);
  * \return Time in UTC
  **/
 time_t predict_from_julian(predict_julian_date_t date);
-
-/**
- * Simplified perturbation models used in modeling the satellite orbits.
- **/
-// enum predict_ephemeris {
-//   EPHEMERIS_SGP4 = 0,
-//   EPHEMERIS_SDP4 = 1,
-//   EPHEMERIS_SGP8 = 2,
-//   EPHEMERIS_SDP8 = 3
-// };
 
 /**
  * Container for processed TLE data from TLE strings.
@@ -114,7 +63,6 @@ typedef struct {
 	double bstar_drag_term;
 	///Number of revolutions around Earth at epoch (line 2, field 9)
 	int revolutions_at_epoch;
-
 	///Which perturbation model to use
 	// enum predict_ephemeris ephemeris;
 	///Ephemeris data structure pointer

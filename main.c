@@ -35,16 +35,18 @@ int main(void){
 		struct predict_position sat_orbit;
 		predict_orbit(sat, &sat_orbit, curr_time);
 		printf("Satellite lat=%f, lon=%f, alt=%f\n", sat_orbit.latitude*180.0/M_PI, sat_orbit.longitude*180.0/M_PI, sat_orbit.altitude);
+		printf("velocity=%lf, position=%lf\n", *sat_orbit.velocity, *sat_orbit.position);
 
 		struct predict_observation sat_obs;
 		predict_observe_orbit(obs, &sat_orbit, &sat_obs);
-		printf("azi=%f (rate: %f), ele=%f (rate: %f)\n", sat_obs.azimuth*180.0/M_PI, sat_obs.azimuth_rate*180.0/M_PI, sat_obs.elevation*180.0/M_PI, sat_obs.elevation_rate*180.0/M_PI);
+		printf("azi=%f, ele=%f\n", sat_obs.azimuth*180.0/M_PI, sat_obs.elevation*180.0/M_PI);
 
 		fflush(stdout);
 		usleep(4000000);
 	}
 
 }
+
 /*  SERIAL TESTS
   sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8};
   sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
