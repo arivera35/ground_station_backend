@@ -1,6 +1,0 @@
---2023-05-30 12:01:00--  http://www.celestrack.com/NORAD/elements/amateur.txt
-Resolving www.celestrack.com (www.celestrack.com)... 64.190.63.111
-Connecting to www.celestrack.com (www.celestrack.com)|64.190.63.111|:80... connected.
-HTTP request sent, awaiting response... 403 Forbidden
-2023-05-30 12:01:01 ERROR 403: Forbidden.
-
