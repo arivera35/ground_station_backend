@@ -19,6 +19,7 @@ predict_orbital_elements_t* predict_parse_tle(const char *tle_line_1, const char
 	predict_orbital_elements_t *m = (predict_orbital_elements_t*)malloc(sizeof(predict_orbital_elements_t));
 	if (m == NULL) return NULL;
 
+
 	char substring_buffer[SUBSTRING_BUFFER_LENGTH];
 	m->satellite_number = atol(SubString(tle_line_1,SUBSTRING_BUFFER_LENGTH,substring_buffer,2,6));
 	m->element_number = atol(SubString(tle_line_1,SUBSTRING_BUFFER_LENGTH,substring_buffer,64,67));
