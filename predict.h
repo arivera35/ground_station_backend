@@ -73,12 +73,12 @@ time_t predict_from_julian(predict_julian_date_t date);
 /**
  * Simplified perturbation models used in modeling the satellite orbits.
  **/
-enum predict_ephemeris {
-  EPHEMERIS_SGP4 = 0,
-  EPHEMERIS_SDP4 = 1,
-  EPHEMERIS_SGP8 = 2,
-  EPHEMERIS_SDP8 = 3
-};
+// enum predict_ephemeris {
+//   EPHEMERIS_SGP4 = 0,
+//   EPHEMERIS_SDP4 = 1,
+//   EPHEMERIS_SGP8 = 2,
+//   EPHEMERIS_SDP8 = 3
+// };
 
 /**
  * Container for processed TLE data from TLE strings.
@@ -116,7 +116,7 @@ typedef struct {
 	int revolutions_at_epoch;
 
 	///Which perturbation model to use
-	enum predict_ephemeris ephemeris;
+	// enum predict_ephemeris ephemeris;
 	///Ephemeris data structure pointer
 	void *ephemeris_data;
 } predict_orbital_elements_t;

@@ -46,7 +46,7 @@ time_t mktime_utc(const struct tm* timeinfo_utc)
  *
  * \return Internally defined Julian start date (fixed)
  **/
-time_t get_julian_start_day()
+time_t  ()
 {
 	struct tm start_time;
 	start_time.tm_sec = 0;
