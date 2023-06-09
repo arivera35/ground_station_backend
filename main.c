@@ -46,6 +46,7 @@ int main(void){
 
 }
 
+
 /*  SERIAL TESTS
   sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8};
   sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
