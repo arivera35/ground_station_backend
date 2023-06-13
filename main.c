@@ -6,63 +6,61 @@
 
 int main(void){
 
-	char catnr [5];
-	printf("Enter NORAD catalog number: ");
-	scanf("%s", catnr);
-	TLEData tle_data;
-	set_cat_num(catnr, &tle_data);
-	printf("TLE line 1: %s\n", tle_data.line1);
-	printf("TLE line 2: %s\n", tle_data.line2);
+// 	char catnr [5];
+// 	printf("Enter NORAD catalog number: ");
+// 	scanf("%s", catnr);
+// 	TLEData tle_data;
+// 	set_cat_num(catnr, &tle_data);
+// 	printf("TLE line 1: %s\n", tle_data.line1);
+// 	printf("TLE line 2: %s\n", tle_data.line2);
 
-	// Create orbit object
-	predict_orbital_elements_t *sat = predict_parse_tle(tle_data.line1, tle_data.line2);
-	if (!sat) {
-		fprintf(stderr, "Failed to initialize orbit from tle!");
-		exit(1);
-	}
-	printf("Satellite object: %d\n", sat->satellite_number);
+// 	// Create orbit object
+// 	predict_orbital_elements_t *sat = predict_parse_tle(tle_data.line1, tle_data.line2);
+// 	if (!sat) {
+// 		fprintf(stderr, "Failed to initialize orbit from tle!");
+// 		exit(1);
+// 	}
+// 	printf("Satellite object: %d\n", sat->satellite_number);
 
-	predict_observer_t *obs = predict_create_observer("Francis GS", 31.767600*M_PI/180.0, -106.435*M_PI/180.0, 1129);
-	if (!obs) {
-		fprintf(stderr, "Failed to initialize observer!");
-		exit(1);
-	}
+// 	predict_observer_t *obs = predict_create_observer("Francis GS", 31.767600*M_PI/180.0, -106.435*M_PI/180.0, 1129);
+// 	if (!obs) {
+// 		fprintf(stderr, "Failed to initialize observer!");  
+// 		exit(1);
+// 	}
 
-	while(true){
+// 	while(true){
 
-		predict_julian_date_t curr_time = predict_to_julian(time(NULL));
+// 		predict_julian_date_t curr_time = predict_to_julian(time(NULL));
 
-		struct predict_position sat_orbit;
-		predict_orbit(sat, &sat_orbit, curr_time);
-		printf("Satellite lat=%f, lon=%f, alt=%f\n", sat_orbit.latitude*180.0/M_PI, sat_orbit.longitude*180.0/M_PI, sat_orbit.altitude);
-		printf("velocity=%lf, position=%lf\n", *sat_orbit.velocity, *sat_orbit.position);
+// 		struct predict_position sat_orbit;
+// 		predict_orbit(sat, &sat_orbit, curr_time);
+// 		printf("Satellite lat=%f, lon=%f, alt=%f\n", sat_orbit.latitude*180.0/M_PI, sat_orbit.longitude*180.0/M_PI, sat_orbit.altitude);
+// 		printf("velocity=%lf, position=%lf\n", *sat_orbit.velocity, *sat_orbit.position);
 
-		struct predict_observation sat_obs;
-		predict_observe_orbit(obs, &sat_orbit, &sat_obs);
-		printf("azi=%f, ele=%f\n", sat_obs.azimuth*180.0/M_PI, sat_obs.elevation*180.0/M_PI);
-		fflush(stdout);
-		usleep(4000000);
-	}
+// 		struct predict_observation sat_obs;
+// 		predict_observe_orbit(obs, &sat_orbit, &sat_obs);
+// 		printf("azi=%f, ele=%f\n", sat_obs.azimuth*180.0/M_PI, sat_obs.elevation*180.0/M_PI);
+// 		fflush(stdout);
+// 		usleep(4000000);
+// 	}
 
-}
+// }
 
 
-/*  SERIAL TESTS
+// /* SERIAL TESTS
   sROTOR_CONFIG az_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB1", .num_bits = 8};
   sROTOR_CONFIG el_rotor = {.baud_rate = 9600, .port_num = "/dev/ttyUSB0", .num_bits = 8};
 
   int fd = rot_init(az_rotor);
-
-  // int fd = serial_init(el_rotor.baud_rate, el_rotor.port_num, el_rotor.num_bits);
-  serial_write(fd, VERSION_ID);
+  serial_write(fd, PARK_AZ);
   char response [255];
   int bytes_read = serial_read(fd, response, 255);
   printf("Num bytes read %d\n", bytes_read);
   printf("String received: %s\n", response);
   serial_close(fd);
-*/
-  // int tle_res = get_tle();
-// }
+// */
+
+}
 
 
 // #include <stdio.h>

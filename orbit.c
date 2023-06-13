@@ -168,7 +168,7 @@ int predict_orbit(const predict_orbital_elements_t *orbital_elements, struct pre
 			// break;
 		// default:
 			//Panic!
-			// return -1;
+			// return -1; 
 	// }
 	m->position[0] = output.pos[0];
 	m->position[1] = output.pos[1];
@@ -188,7 +188,7 @@ int predict_orbit(const predict_orbital_elements_t *orbital_elements, struct pre
 	geodetic_t sat_geodetic;
 	Calculate_LatLonAlt(utc, m->position, &sat_geodetic);
 
-	m->latitude = sat_geodetic.lat;
+	m->latitude = sat_geodetic.lat;  
 	m->longitude = sat_geodetic.lon;
 	m->altitude = sat_geodetic.alt;
 

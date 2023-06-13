@@ -72,7 +72,7 @@ int serial_write(int fd, char cmd []){
 
 int serial_read(int fd, char response [], int len) {
 
-    usleep(45000);
+    usleep(50000);
     memset(response, 0, len);
     len = read(fd, response, len);
     /* TODO: loop to attempt to read from serial port multiple times since response is not always ready*/
