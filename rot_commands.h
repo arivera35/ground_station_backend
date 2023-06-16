@@ -7,6 +7,7 @@
 #define RESTORE_DEFAULT "W00;"
 #define READ_PRESETS "PRn;"
 #define MOVE_EL_80 "APn80.0\r;"
+// #define PARK_EL "APn170.0\r;"
 #define PARK_EL "APn90.0\r;"
 #define MOVE_EL_70 "APn70.0\r;"
 #define MOVE_EL_60 "APn60.0\r;"
